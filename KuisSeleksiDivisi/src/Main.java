@@ -14,26 +14,78 @@ import java.util.Scanner;
 public class Main {
     Scanner keyboard = new Scanner(System.in);
     
-    int nik;
+    boolean edit;
+    int nik, divisi;
     double nt, nc, nw;
     String nm;
     
-    public void formandroid() {
-        System.out.print("Input NIK : ");
-        nik = keyboard.nextInt();
-        System.out.print("Input Nama : ");
-        nm = keyboard.next();
+    public void subMenu() {
+        int pilih;
+        
+        System.out.println(" ");
+        System.out.println("MENU");
+        System.out.println("1. Edit");
+        System.out.println("2. Tampil");
+        System.out.println("3. Exit");
+        System.out.print("Pilih : ");
+        pilih = keyboard.nextInt();
+        
+        if (pilih == 1) {
+            formAndroid(true);
+        } else if (pilih == 2) {
+            hitungNilai();
+        } else {
+            keluar();
+        }
+    }
+    
+    public void hitungNilai() {
+        // Instansiasi
+                CalonKaryawan calonkaryawan = new CalonKaryawan(nik, nm, nt, nc, nw);
+                if(divisi == 1) {
+                    System.out.println("Nilai Akhir : " + calonkaryawan.seleksiAndroidDev());
+                    if (calonkaryawan.seleksiAndroidDev() >= 85) {
+                        System.out.println("KETERANGAN : LULUS");
+                        System.out.println("Selamat kepada "+ nm + " diterima untuk posisi Android");
+                    } else {
+                        System.out.println("KETERANGAN : GAGAL");
+                        System.out.println("Mohon maaf kepada "+ nm + " ditolak untuk posisi Android");
+                    }
+                } else {
+                    System.out.println("Nilai Akhir : " + calonkaryawan.seleksiWebDev());
+                    if (calonkaryawan.seleksiWebDev()>= 85) {
+                        System.out.println("KETERANGAN : LULUS");
+                        System.out.println("Selamat kepada "+ nm + " diterima untuk posisi Web");
+                    } else {
+                        System.out.println("KETERANGAN : GAGAL");
+                        System.out.println("Mohon maaf kepada "+ nm + " ditolak untuk posisi Web");
+                    }
+                }
+                subMenu();
+    }
+    
+    public void formAndroid() {
         System.out.print("Input Nilai tulis : ");
         nt = keyboard.nextDouble();
         System.out.print("Input Nilai coding : ");
         nc = keyboard.nextDouble();
         System.out.print("Input Nilai wawancara : ");
+        nw = keyboard.nextDouble();
+        
+        subMenu();
+    }
+    
+    public void formAndroid(boolean edit) {
+        System.out.println(" ");
+        System.out.println("FORM EDIT");
+        System.out.print("Input Nilai tulis : ");
         nt = keyboard.nextDouble();
+        System.out.print("Input Nilai coding : ");
+        nc = keyboard.nextDouble();
+        System.out.print("Input Nilai wawancara : ");
+        nw = keyboard.nextDouble();
         
-        // Instansiasi
-        CalonKaryawan calonkaryawan = new CalonKaryawan(nik, nm, nt, nc, nw);
-        
-        System.out.println("KETERANGAN : " + calonkaryawan.seleksiAndroidDev());
+        subMenu();
     }
     
     public void keluar() {
@@ -49,17 +101,19 @@ public class Main {
         System.out.println("3. Keluar");
         System.out.print("Pilih Jenis Form : ");
         option = keyboard.nextInt();
+        System.out.println(" ");
+        System.out.print("Input NIK : ");
+        nik = keyboard.nextInt();
+        System.out.print("Input Nama : ");
+        nm = keyboard.next();
+        divisi = option;
         
         switch(option) {
             case 1:
-//                // Instansiasi
-//                Form form = new Form(1);
-//                
-//                System.out.println("Divisi yang kamu pilih adalah " + form.jenisDivisi(1));
-                formandroid();
+                formAndroid();
                 break;
             case 2:
-                System.out.println("Form Web");
+                formAndroid();
                 break;
             case 3:
                 keluar();

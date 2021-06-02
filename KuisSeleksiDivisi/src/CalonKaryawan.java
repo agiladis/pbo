@@ -24,12 +24,12 @@ public class CalonKaryawan implements Seleksi{
     
     @Override
     public double seleksiAndroidDev() {
-        if (nilaiTulis*0.2 + nilaiCoding*0.5 + nilaiWawancara*0.3 >= 85) {
-            System.out.println("KETERANGAN : LULUS");
-        } else {
-            System.out.println("KETERANGAN : GAGAL");
-        }
-        return 0;
+        return ((nilaiTulis*0.2) + (nilaiCoding*0.5) + (nilaiWawancara*0.3));
+//        if (nilaiTulis*0.2 + nilaiCoding*0.5 + nilaiWawancara*0.3 >= 85) {
+//            System.out.println("KETERANGAN : LULUS");
+//        } else {
+//            System.out.println("KETERANGAN : GAGAL");
+//        }
     }
 
     @Override
