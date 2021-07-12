@@ -90,8 +90,8 @@ public class ViewData extends JFrame {
         btnDelete.setEnabled(false);
     }
     
-    public int getKode(){
-        return Integer.parseInt(tfKode.getText());
+    public String getKode(){
+        return tfKode.getText();
     }
     
     public void setKode(String kode_barang, boolean visibility) {

@@ -61,7 +61,7 @@ public class ModelData {
         }
     }
     
-    public void insertData(int kode_barang, String nama_barang, int jumlah, int harga_satuan){
+    public void insertData(String kode_barang, String nama_barang, int jumlah, int harga_satuan){
         int jmlData=0;
         //parse to double
         
@@ -69,7 +69,7 @@ public class ModelData {
         int total_harga = jumlah * harga_satuan;
         try {
         // Cek apakah data sudah ada berdasarkan judul
-           String query = "SELECT * FROM inventaris WHERE kode_barang=" + kode_barang; 
+           String query = "SELECT * FROM inventaris WHERE kode_barang='" + kode_barang + "'"; 
            System.out.println(kode_barang + " " + nama_barang + " " + jumlah + " " + harga_satuan + " " + total_harga); // buat ngecek di command
            ResultSet resultSet = statement.executeQuery(query);
            
@@ -94,10 +94,10 @@ public class ModelData {
         }
     }
     
-    public void updateData(int kode_barang, String nama_barang, int jumlah, int harga_satuan){
+    public void updateData(String kode_barang, String nama_barang, int jumlah, int harga_satuan){
         int jmlData=0;
          try {
-           String query = "SELECT * FROM inventaris WHERE kode_barang=" + kode_barang; 
+           String query = "SELECT * FROM inventaris WHERE kode_barang='" + kode_barang + "'"; 
            ResultSet resultSet = statement.executeQuery(query);
            
            while (resultSet.next()){ 
@@ -106,7 +106,7 @@ public class ModelData {
            
              if (jmlData==1) {
                 int total_harga = jumlah * harga_satuan;
-                query = "UPDATE inventaris SET nama_barang='" + nama_barang + "', jumlah='" + jumlah + "', harga_satuan='" + harga_satuan + "', total_harga='" + total_harga + "' WHERE kode_barang=" + kode_barang;
+                query = "UPDATE inventaris SET nama_barang='" + nama_barang + "', jumlah='" + jumlah + "', harga_satuan='" + harga_satuan + "', total_harga='" + total_harga + "' WHERE kode_barang='" + kode_barang + "'";
                 statement = (Statement) koneksi.createStatement();
                 statement.executeUpdate(query); //execute querynya
                 System.out.println("Berhasil diupdate");
@@ -124,7 +124,7 @@ public class ModelData {
     
     public void deleteData (String kode_barang) {
         try{
-            String query = "DELETE FROM inventaris WHERE kode_barang="+kode_barang;
+            String query = "DELETE FROM inventaris WHERE kode_barang='"+kode_barang + "'";
             statement = koneksi.createStatement();
             statement.executeUpdate(query);
             JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");

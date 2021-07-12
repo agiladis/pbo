@@ -36,7 +36,7 @@ public class ControllerData {
         view.btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int kode_barang = view.getKode();
+                String kode_barang = view.getKode();
                 String nama_barang = view.getNama();
                 int jumlah = view.getJumlah();
                 int harga_satuan = view.getHarga();
@@ -96,7 +96,7 @@ public class ControllerData {
                 view.btnUpdate.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        int kode_barang = view.getKode();
+                        String kode_barang = view.getKode();
                         String nama_barang = view.getNama();
                         int jumlah = view.getJumlah();
                         int harga_satuan = view.getHarga();
